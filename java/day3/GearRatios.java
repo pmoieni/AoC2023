@@ -46,7 +46,6 @@ public class GearRatios {
             range = secondLine.substring(startIdx - 1, endIdx + 1 + 1);
         }
 
-        System.out.println("range: " + range);
         for (var k = 0; k < range.length(); k++) {
             if (range.charAt(k) != '.' && !(nums.contains(range.charAt(k)))) {
                 return parsed = Integer.valueOf(mainLine.substring(startIdx, endIdx + 1));
@@ -76,19 +75,9 @@ public class GearRatios {
                 bottomLine = input.get(i + 1);
             }
 
-            System.out.println("-----------------------------balls-------------------------------");
-            System.out.println("top: " + topLine);
-            System.out.println("man: " + mainLine);
-            System.out.println("bot: " + bottomLine);
-
             for (var j = 0; j < mainLine.length(); j++) {
                 if (nums.contains(mainLine.charAt(j))) {
-                    System.out.println("last sum: " + sum);
-                    System.out.println("startIdx: " + j);
                     var endIdx = getNumber(mainLine, j);
-                    System.out.println("endIdx: " + endIdx);
-                    System.out.println("starts with: " + mainLine.charAt(j));
-                    System.out.println("number: " + mainLine.substring(j, endIdx + 1));
 
                     // check main line
                     if (j != 0) { // left
@@ -112,7 +101,6 @@ public class GearRatios {
                     if (!topLine.isEmpty()) {
                         int parsed = checkRange(mainLine, topLine, j, endIdx);
                         if (parsed != -1) {
-                            System.out.println("summed top");
                             sum += parsed;
                             j = endIdx + 1;
                             continue;
@@ -123,7 +111,6 @@ public class GearRatios {
                     if (!bottomLine.isEmpty()) {
                         int parsed = checkRange(mainLine, bottomLine, j, endIdx);
                         if (parsed != -1) {
-                            System.out.println("summed bot");
                             sum += parsed;
                             j = endIdx + 1;
                             continue;
@@ -135,7 +122,7 @@ public class GearRatios {
             }
         }
 
-        System.out.println(sum);
+        System.out.println("part1: " + sum);
     }
 
     public static void part2(List<String> input) {
