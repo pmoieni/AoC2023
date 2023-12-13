@@ -9,6 +9,7 @@ import (
 )
 
 func getTotalRecords(time int, distance int) (records int) {
+	// the middle number always gives the best record
 	middle := float64(time) / float64(2)
 	floor := int(math.Floor(float64(middle)))
 	for i := floor; i > 0; i-- {
@@ -32,7 +33,6 @@ func part1(input string) {
 	times := strings.Fields(strings.Split(lines[0], ":")[1])
 	distances := strings.Fields(strings.Split(lines[1], ":")[1])
 
-	// the middle number always gives the best record
 	records := 1
 	for i, timeStr := range times {
 		time, _ := strconv.Atoi(timeStr)
@@ -48,7 +48,6 @@ func part2(input string) {
 	timeStr := strings.Join(strings.Fields(strings.Split(lines[0], ":")[1]), "")
 	distanceStr := strings.Join(strings.Fields(strings.Split(lines[1], ":")[1]), "")
 
-	// the middle number always gives the best record
 	time, _ := strconv.Atoi(timeStr)
 	distance, _ := strconv.Atoi(distanceStr)
 
